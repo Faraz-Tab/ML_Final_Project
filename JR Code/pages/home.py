@@ -47,8 +47,8 @@ Most treatment includes:
 * Taking insulin as reccommended
 '''
 
-layout = html.Div(style={'backgroundColor': colors['background']}, children=[
-    html.Div([dcc.Markdown(children=markdown_text)], style={'color':colors['text']}),
-    html.Div([dcc.Markdown(children=symptoms)], style={'color':colors['text']}),
-    html.Div([dcc.Markdown(children=treatment)], style={'color':colors['text']})]
+layout = html.Div(children=[
+    html.Div([dcc.Markdown(children=markdown_text)]),
+    html.Div([dcc.Markdown(children=symptoms)]),
+    html.Div([dcc.Markdown(children=treatment)])]
 )
