@@ -8,7 +8,6 @@ import dash_ag_grid as dag
 
 df = pd.read_csv('Diabetes/kaggle_diabetes.csv')
 
-df2 = df.drop(columns='Outcome')
 columns=list(df.columns)
 
 dash.register_page(
@@ -82,7 +81,7 @@ theme_colors = [
 colors = html.Div(
     [dbc.Button(f"{color}", color=f"{color}", size="sm") for color in theme_colors]
 )
-colors = html.Div(["Theme Colors:", colors], className="mt-2")
+
 
 controls = dbc.Card(
     [xDropdown, yDropDown],
@@ -90,7 +89,7 @@ controls = dbc.Card(
 )
 
 tab1 = dbc.Tab([dcc.Graph(id='scatter-chart', figure=px.scatter(template='bootstrap'))], label="Scatter Chart")
-tab2 = dbc.Tab([dcc.Graph(id='hist-chart',figure=px.histogram(template='bootstrap'))], label="Histogram")
+tab2 = dbc.Tab([dcc.Graph(id='bar-chart', figure= px.histogram(df,template='bootstrap'))], label="Histogram")
 
 tabs = dbc.Card(dbc.Tabs([tab1,tab2]))
 
@@ -105,7 +104,7 @@ layout = dbc.Container(
                 # ************************************
                 theme_controls
             ],  width=4),
-            dbc.Col([tabs, colors], width=8),
+            dbc.Col([tabs], width=8),
         ]),
     ],
     fluid=True,
@@ -114,7 +113,7 @@ layout = dbc.Container(
 
 @callback(
         Output('scatter-chart', 'figure'),
-        Output('hist-chart', 'figure'),
+        Output('bar-chart', 'figure'),
         Input('xaxis_column', 'value'),
         Input('yaxis_column', 'value'),
         Input(ThemeChangerAIO.ids.radio("theme"), "value"),
@@ -137,11 +136,19 @@ def update(xaxis_column, yaxis_column, theme, color_mode_switch_on):
         y= yaxis_column,
         color='Outcome',
         template=template_name,
-        title= f'{xaxis_column} versus {yaxis_column}'
+        marginal_y= 'box',
+        marginal_x='box'
     )
-    fig_scatter.update_layout(showlegend=False)
+    fig_hist = px.histogram(
+        df,
+        x= xaxis_column,
+        color = 'Outcome',
+        marginal = 'violin',
+        histfunc='avg',
+        template=template_name        
+    )
 
-    return fig_scatter
+    return fig_scatter, fig_hist
 
 
 clientside_callback(
