@@ -1,7 +1,5 @@
 import dash
 from dash import Dash, html, dcc, callback, Output, Input
-import plotly.express as px
-import pandas as pd
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import ThemeChangerAIO, template_from_url
 

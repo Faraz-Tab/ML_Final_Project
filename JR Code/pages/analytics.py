@@ -8,6 +8,14 @@ import dash_ag_grid as dag
 
 df = pd.read_csv('Diabetes/kaggle_diabetes.csv')
 
+df['Glucose'].fillna(df['Glucose'].mean(), inplace=True)
+df['BloodPressure'].fillna(df['BloodPressure'].mean(), inplace=True)
+df['SkinThickness'].fillna(df['SkinThickness'].median(), inplace=True)
+df['Insulin'].fillna(df['Insulin'].median(), inplace=True)
+df['BMI'].fillna(df['BMI'].median(), inplace=True)
+
+
+
 columns=list(df.columns)
 
 dash.register_page(
@@ -129,12 +137,17 @@ def update(xaxis_column, yaxis_column, theme, color_mode_switch_on):
     theme_name = template_from_url(theme)
 
     template_name = theme_name if color_mode_switch_on else theme_name + "_dark"
+    
+    dff = df.copy()
+
+    dff["Outcome"] = df["Outcome"].astype(str)
 
     fig_scatter = px.scatter(
-        df,
+        dff,
         x= xaxis_column,
         y= yaxis_column,
         color='Outcome',
+        color_discrete_sequence=["red", 'blue'],
         template=template_name,
         marginal_y= 'box',
         marginal_x='box'
