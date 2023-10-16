@@ -147,7 +147,6 @@ def update(xaxis_column, yaxis_column, theme, color_mode_switch_on):
         x= xaxis_column,
         y= yaxis_column,
         color='Outcome',
-        color_discrete_sequence=["red", 'blue'],
         template=template_name,
         marginal_y= 'box',
         marginal_x='box'
