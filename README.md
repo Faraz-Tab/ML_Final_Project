@@ -7,7 +7,7 @@ models that can accurately predict if an individual has Diabetes given a set of 
 ## Dataset
 
 The models are trained on two seperate datasets as the goal is to assess the performance
-of these models and find and explore the datasets and it's limitations. Both datasets are available on 
+of these models and find and exp    lore the datasets and it's limitations. Both datasets are available on 
 [Kaggle Datasets Page](https://www.kaggle.com/datasets).
 * A csv format dataset containing data such as Pregnancies, Glucose, BloodPressure, SkinThickness, 
 Insulin, BMI, DiabetesPedigreeFunction, Age and our target column, Outcome of around 2000 individuals.
@@ -31,7 +31,7 @@ For our First model, we chose to use the first dataset. It was chosen based on a
 #### Summary of model
 After data evaluation and processing using Pandas, We passed our scaled training data to a function that fits the dataset to some chosen algorithms such as Logistic_regression, Decision Tree, RandomForest and and indicates which model can give us the best accuracy. On this dataset, Random Forest had the highest score amognst the models so we chose it for o the final model to make predictions based on the datasets input features that it recieves.
 
-[![Scores](static/First_model_scores.png)]
+![Scores](static/First_model_scores.png)
 
 
 #### Libraries used
