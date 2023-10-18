@@ -56,7 +56,7 @@ from sklearn.svm import SVC
 
 ### Second model
 
-For Our second model, we chose another dataset with a much more data point. We wanted to use a deep Neural Network to get the predictions on our dataset. On this dataset, our NN takes 15 features and gives a binary output to predict Diabetes.
+For Our second model, we chose another dataset with a much more data point. We wanted to use a DNN (deep Neural Network) to get the predictions on our dataset. On this dataset, our NN takes 15 features and gives a binary output to predict Diabetes.
 
 #### Taks
 
@@ -67,6 +67,8 @@ For Our second model, we chose another dataset with a much more data point. We w
 5. Repeat the process with our first dataset to compare
 
 #### Summary of model
+Since our project was to focus on predicting diabetes, We wanted to get our recall to be as high as possible when calculating the Confusion matrix. Our first attempts gave us a 97% accuracy with a recall or 64% on our testing dataset. Pictures of it's performance during the process and tuning are available in the static folder.
+
 
 #### Libraries used
 ```ruby
@@ -79,5 +81,6 @@ import numpy as np
 import pandas as pd
 ```
 
-###
+
+
 
