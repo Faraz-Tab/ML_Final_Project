@@ -25,7 +25,7 @@ theme_controls = html.Div(
 )
 
 header = html.H4(
-    'Project Description', className="bg-primary text-white p-2 mb-2 text-center"
+    'Home', className="bg-primary text-primary p-2 mb-2 text-center"
 )
 
 theme_colors = [
